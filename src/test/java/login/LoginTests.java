@@ -12,6 +12,8 @@ import org.openqa.selenium.opera.OperaDriver;
 import pages.LoginPage;
 import pages.SecureAreaPage;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class LoginTests extends BaseTests {
 
@@ -106,6 +108,19 @@ public class LoginTests extends BaseTests {
         Assertions.assertTrue(textCheckS.contains("Logged in as Super User (admin) at Inpatient Ward."), "Test check");
     }
 
+    //click eye icon display password
+    @Test
+    @DisplayName("TC09-Login Successfully!")
+    public void testLoginSucessfull4(){
+        loginPage.setUserName("Admin");
+        loginPage.setPassword("Admin123");
+        loginPage.clickEyeIcon();
+        String displayedPassword = loginPage.getcheckEye();
+        String expectedPassword  = "Admin123";
+        assertEquals(displayedPassword, expectedPassword);
+    }
+
+
     //pressing the 'Enter' key on the login page
     @Test
     @DisplayName("TC10-Login Successfully!")
@@ -117,50 +132,7 @@ public class LoginTests extends BaseTests {
     }
 
 
-    //click eye icon display password
-    @Test
-    @DisplayName("TC09-Login Successfully!")
-    public void testLoginSucessfull4(){
-        loginPage.setUserName("Admin");
-        loginPage.setPassword("Admin123");
-        loginPage.clickEyeIcon();
-        SecureAreaPage secureAreaPage = new SecureAreaPage();
-        String checkEye = secureAreaPage.getcheckEye();
-        Assertions.assertTrue(checkEye.contains("Admin123"), "True");
-    }
 
-
-
-
-
-//    @Test
-//    @DisplayName("Verify concurrent login with same credentials")
-//    public void testConcurrentLogin() {
-//        WebDriver driver1 = new ChromeDriver();
-//        WebDriver driver2 = new OperaDriver();
-//
-//        LoginPage loginPage1 = new LoginPage(driver1);
-//        LoginPage loginPage2 = new LoginPage(driver2);
-//
-//        driver1.get("https://opensource-demo.orangehrmlive.com/web/auth/login");
-//        driver2.get("https://opensource-demo.orangehrmlive.com/web/auth/login");
-//
-//        loginPage1.setUserName("Admin");
-//        loginPage1.setPassword("admin123");
-//        SecureAreaPage secureAreaPage1 = loginPage1.clickLoginButton();
-//
-//
-//        loginPage2.setUserName("Admin");
-//        loginPage2.setPassword("admin123");
-//        SecureAreaPage secureAreaPage2 = loginPage2.clickLoginButton();
-//
-//
-//        Assertions.assertTrue(secureAreaPage1.isDisplayed(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[3]/button[2]")), "User is not logged in on browser 1");
-//        Assertions.assertTrue(secureAreaPage2.isDisplayed(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[3]/button[2]")), "User is not logged in on browser 2");
-//
-//        driver1.quit();
-//        driver2.quit();
-//    }
 
 
 }

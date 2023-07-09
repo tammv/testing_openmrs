@@ -11,9 +11,10 @@ public class LoginPage {
     private By userNameTxt = By.name("username");
     private By passwordTxt = By.name("password");
     private By loginButton = By.xpath("//*[@id=\"loginButton\"]");
+    private By logoutButton = By.xpath("//*[@id=\"navbarSupportedContent\"]/ul/li[3]/a");
     private By selectField = By.xpath("//*[@id=\"Inpatient Ward\"]");
     private By eyeIcon = By.xpath("//*[@id=\"togglePassword\"]");
-
+    private By checkEye = By.name("password");
 
     public LoginPage(WebDriver driver){
         this.driver = driver;
@@ -24,9 +25,17 @@ public class LoginPage {
     public void setPassword(String password){
         driver.findElement(passwordTxt).sendKeys(password);
     }
+    public String getcheckEye() {
+        return driver.findElement(checkEye).getAttribute("value");
+    }
 
     public SecureAreaPage clickLoginButton(){
         driver.findElement(loginButton).click();
+        return new SecureAreaPage(driver);
+    }
+
+    public SecureAreaPage clickLogoutButton(){
+        driver.findElement(logoutButton).click();
         return new SecureAreaPage(driver);
     }
 
@@ -49,5 +58,15 @@ public class LoginPage {
 
     public void clickEyeIcon() {
         driver.findElement(eyeIcon).click();
+    }
+
+    public void verifyRemember() {
+        String username = "Admin";
+        String preFilledUsername = driver.findElement(userNameTxt).getAttribute("value");
+        if(preFilledUsername.equals(username)) {
+            System.out.println("CHECKED REMEMBER!");
+        } else {
+            System.out.println("UNCHECKED REMEMBER!");
+        }
     }
 }

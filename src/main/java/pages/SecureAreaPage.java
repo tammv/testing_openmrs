@@ -11,7 +11,7 @@ public class SecureAreaPage {
     private WebDriver driver;
     private By statusAlert = By.xpath("//*[@id=\"error-message\"]");
     private By textCheckS = By.tagName("h4");
-    private By checkEye = By.name("password");
+
 
 
     public SecureAreaPage(WebDriver driver) {
@@ -25,7 +25,7 @@ public class SecureAreaPage {
         return driver.findElement(statusAlert).getText();
     }
     public String getTextCheckS() { return driver.findElement(textCheckS).getText();}
-    public String getcheckEye() {return driver.findElement(checkEye).getText();}
+
 
     public boolean isDisplayed(By locator) {
         try {
