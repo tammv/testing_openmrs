@@ -11,8 +11,10 @@ public class LoginPage {
     private By userNameTxt = By.name("username");
     private By passwordTxt = By.name("password");
     private By loginButton = By.xpath("//*[@id=\"loginButton\"]");
+
     private By selectField = By.xpath("//*[@id=\"Inpatient Ward\"]");
 
+    private By logoutButton = By.xpath("//*[@id=\"navbarSupportedContent\"]/ul/li[3]/a");
 
     public LoginPage(WebDriver driver){
         this.driver = driver;
