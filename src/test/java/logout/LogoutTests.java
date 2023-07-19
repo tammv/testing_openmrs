@@ -10,6 +10,15 @@ public class LogoutTests extends BaseTests {
 
     @Test
     @DisplayName("TC01-Logout 1 Successfully!")
+    public void testLoginSucessfull(){
+        loginPage.setUserName("Admin");
+        loginPage.setPassword("Admin123");
+        loginPage.clickSelectField();
+        SecureAreaPage secureAreaPage = loginPage.clickLoginButton();
+        System.out.println("Login 1 successfully!");
+    }
+    @Test
+    @DisplayName("TC01-Logout 2 Successfully!")
     public void testLogoutSucessfull(){
         loginPage.setUserName("Admin");
         loginPage.setPassword("Admin123");
