@@ -11,8 +11,7 @@ public class SecureAreaPage {
     private WebDriver driver;
     private By statusAlert = By.xpath("//*[@id=\"error-message\"]");
     private By textCheckS = By.tagName("h4");
-//    private By requiredAlertUserName = By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[1]/div/span");
-//    private By requiredAlertPassword = By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[2]/div/span");
+
 
 
     public SecureAreaPage(WebDriver driver) {
